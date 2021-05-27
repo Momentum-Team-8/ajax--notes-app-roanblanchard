@@ -10,12 +10,12 @@ function getListOfNotes () {
         for (let x of data) {
         // generates the title of the note
         const title = document.createElement('p')
-        title.innerHTML = "Title: " + data[0].title
+        title.innerHTML = "Title: " + x.title
         output.appendChild(title)
 
         // generates the body of the note
         const body = document.createElement('p')
-        body.innerHTML = "Body: " + data[0].body
+        body.innerHTML = "Body: " + x.body
         output.appendChild(body)
         }
     })
