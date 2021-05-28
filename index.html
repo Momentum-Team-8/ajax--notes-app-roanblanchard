@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="script.js" defer></script>
+  <script src="moment.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
   <title>Notes</title>
 </head>
 <body>
-  <form>
-    <div class="output"></div>
-    <input id="button" type="submit" value="Show me the notes!"></input>
+  <h1 class="title">Notes</h1>
+  <form id="note-form">
+    <div class="content">
+      <label for="newNote">New note: </label>
+      <input type="text" id="newNote" name="newNote">
+      <button type="submit" class="button is-primary">Submit</button>
+      <ul class="notes"></ul>
+    </div>
+    
   </form>
 </body>
 </html>
