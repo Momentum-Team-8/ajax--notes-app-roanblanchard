@@ -28,7 +28,20 @@ function renderNotes(noteObj) {
 }
 
 function renderNoteText(noteListItem, noteObj) {
+    const del = document.createElement('p')
+    const edit = document.createElement('p')
+    del.classList.add('delete')
+    edit.classList.add('edit')
+    del.innerHTML = '❌'
+    edit.innerHTML = '✍️'
     noteListItem.innerHTML = noteObj.body
+    noteListItem.appendChild(del)
+    noteListItem.appendChild(edit)
+
+    // noteListItem.classList.add(
+    //     'delete',
+    //     'edit'
+    // )
     }
 
 // end of note rendering
@@ -57,6 +70,31 @@ function createNote(noteText) {
     })
     .then(response => response.json())
     .then(data => renderNotes(data))
+}
+
+// handles deleting a note from the list
+output.addEventListener('click', event => {
+    // if my user clicks on an element with the class name of
+    // delete, then I wan to run deleteTodo()
+    if (event.target.classList.contains('delete')) {
+        deleteNote(event.target)
+    }
+})
+
+function deleteNote(element) {
+    // I need to find the todo item that I want to remove from the DOM
+    // and delete from the database by grabbing on to the todo's id
+    const noteId = element.parentElement.id
+    // This request url is slightly different than your GET request url
+    // I am taking my base url localhost:3000/notes and adding
+    // /${todoId} where todoId equals the id of todoId element
+    fetch(url + "/" + `${noteId}`, {
+        // I need to send some information with this request
+        // I am telling the API that the request method is DELETE
+        method: 'DELETE'
+        // here is where I am moving the todo from the DOM
+        // so we don't see it on our page anymore
+    }).then(() => element.parentElement.remove())
 }
 
 
