@@ -54,13 +54,13 @@ function renderNotes(noteObj) {
     const itemEl = document.createElement('li')
     itemEl.id = noteObj.id
     itemEl.classList.add(
-        'box'
+        
     )   
     
     renderNoteText(itemEl, noteObj)
     output.appendChild(itemEl)
 }
-   
+
    // This function is taking two arguments: a todo <li> a todo object.
 function renderNoteText(noteListItem, noteObj) {
        // Here I am setting the content of my <li> to the body of my todo object
