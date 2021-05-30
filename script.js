@@ -2,6 +2,7 @@ const url = 'http://localhost:3000/notes'
 const form = document.querySelector('#note-form')
 const output = document.querySelector('.notes')
 const getNotesButton = document.querySelector('.button')
+const changePlaceholder = document.querySelector('#newNote')
 
 
 // iterates through notes and renders them to the screen
@@ -14,6 +15,7 @@ function getListOfNotes () {
         renderNotes(x)
         }
     })
+    changePlaceholder.placeholder = 'Enter note here'
 }
 
 function renderNotes(noteObj) {
@@ -38,10 +40,6 @@ function renderNoteText(noteListItem, noteObj) {
     noteListItem.appendChild(del)
     noteListItem.appendChild(edit)
 
-    // noteListItem.classList.add(
-    //     'delete',
-    //     'edit'
-    // )
     }
 
 // end of note rendering
@@ -97,6 +95,39 @@ function deleteNote(element) {
     }).then(() => element.parentElement.remove())
 }
 
+
+// handles editing notes
+
+
+output.addEventListener('click', event => {
+    if (event.target.classList.contains('edit')) {
+        newNoteInput = document.createElement('input')
+        newNoteInput.value = event.target.parentElement.innerText.slice(0, -5)
+        event.target.appendChild(newNoteInput)
+        
+    }
+})
+
+function updateNote(element) {
+    const noteId = element.parentElement.id
+    fetch(url + "/" + `${noteId}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            title: element,
+            body: element,
+            create_at: moment().format()
+        })
+    })
+    .then((response) => response.JSON)
+    .then((data) => console.log(data))
+}
+
+function renderUpdatedNote (note) {
+    const editText = document.createElement('input')
+    editText.placeholder = 'enter updated note'
+    note.appendChild(editText)
+}
 
 
 
