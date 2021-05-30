@@ -102,9 +102,14 @@ function deleteNote(element) {
 output.addEventListener('click', event => {
     if (event.target.classList.contains('edit')) {
         newNoteInput = document.createElement('input')
+        newNoteSubmit = document.createElement('button')
+        newNoteSubmit.type = 'submit'
+        newNoteSubmit.innerText = 'Submit'
         newNoteInput.value = event.target.parentElement.innerText.slice(0, -5)
         event.target.appendChild(newNoteInput)
-        
+        event.target.appendChild(newNoteSubmit)
+
+        // updateNote(event.target)
     }
 })
 
