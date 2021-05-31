@@ -73,39 +73,25 @@ function createNote(noteText) {
 
 // handles deleting a note from the list
 output.addEventListener('click', event => {
-    // if my user clicks on an element with the class name of
-    // delete, then I wan to run deleteTodo()
     if (event.target.classList.contains('delete')) {
         deleteNote(event.target)
     }
 })
 
 function deleteNote(element) {
-    // I need to find the todo item that I want to remove from the DOM
-    // and delete from the database by grabbing on to the todo's id
     const noteId = element.parentElement.id
-    // This request url is slightly different than your GET request url
-    // I am taking my base url localhost:3000/notes and adding
-    // /${todoId} where todoId equals the id of todoId element
     fetch(url + "/" + `${noteId}`, {
-        // I need to send some information with this request
-        // I am telling the API that the request method is DELETE
         method: 'DELETE'
-        // here is where I am moving the todo from the DOM
-        // so we don't see it on our page anymore
     }).then(() => element.parentElement.remove())
 }
 
 
 // handles editing notes
-
-
 output.addEventListener('click', event => {
     if (event.target.classList.contains('edit')) {
         newNoteInput = document.createElement('input')
         newNoteInput.classList.add('new-input-value')
         newNoteSubmit = document.createElement('button')
-        // newNoteSubmit.type = 'submit'
         newNoteSubmit.innerText = 'Submit'
         newNoteSubmit.classList.add('edit-button')
         newNoteInput.value = event.target.parentElement.innerText.slice(0, -5)
@@ -117,8 +103,6 @@ output.addEventListener('click', event => {
 output.addEventListener('click', event => {
     event.preventDefault()
     if (event.target.classList.contains('edit-button')) {
-        // const target = event.target.parentElement
-        // const targetPar
         updateNote(event.target)
     }
 })
@@ -139,12 +123,6 @@ function updateNote(element) {
     .then((data) => console.log(data))
     location.reload()
 }
-
-// function renderUpdatedNote (note) {
-//     const editText = document.createElement('input')
-//     editText.placeholder = 'enter updated note'
-//     note.appendChild(editText)
-// }
 
 
 
