@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F4F4F8;
+    padding-bottom: 100px;
+}
+
+h1 {
+    background-color: #E6E6EA;
+    margin-bottom: 40px;
+    padding: 10px;
+    font-size: 30pt;
+}
+
+label {
+    margin-left: 10px;
+}
+
+form {
+    font-size: 13pt;
+}
+
+.first-button {
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(252, 142, 122);
+    padding: 10px;
+    font-size: 11pt;
+    margin-left: 245px;
+    margin-top: 5px;
+}
+
+.edit-button {
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(252, 142, 122);
+    padding: 10px;
+    font-size: 11pt;
+}
+
+.new-input-value {
+    width: fit-content;
+    height: fit-content;
+}
+
+
+#newNote {
+    margin-left: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 30px;
+    width: 300px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+::placeholder {
+    text-indent: 100px;
+    opacity: 50%;
+}
+
+li {
+    border-radius: 10px;
+    background-color: #D4E6B5;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 10px;
+    max-width: 400px;
+    font-size: 13pt;
+}
+
+
+li > p:nth-child(1) {
+    margin-left: 50px;
+    margin-right: 10px;
+    font-size: 15pt;
+
+}
+
+li > p:nth-child(2) {
+    font-size: 15pt;
+}
+
+ul {
+    margin-top: 50px;
+}

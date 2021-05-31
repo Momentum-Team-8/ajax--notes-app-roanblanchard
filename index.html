@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <script src="moment.min.js" defer></script>
   <title>Notes</title>
 </head>
 <body>
-  
+  <h1 class="title">Notes</h1>
+  <form id="note-form">
+    <div class="content">
+      <label for="newNote">New note: </label>
+      <input type="text" id="newNote" name="newNote" placeholder=" ">
+      <button class="first-button" type="submit">Submit</button>
+      <ul class="notes"></ul>
+    </div>
+    
+  </form>
 </body>
 </html>
