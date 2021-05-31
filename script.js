@@ -3,6 +3,7 @@ const form = document.querySelector('#note-form')
 const output = document.querySelector('.notes')
 const getNotesButton = document.querySelector('.button')
 const changePlaceholder = document.querySelector('#newNote')
+const editButtonSubmit = document.querySelector('.edit')
 
 
 // iterates through notes and renders them to the screen
@@ -102,37 +103,48 @@ function deleteNote(element) {
 output.addEventListener('click', event => {
     if (event.target.classList.contains('edit')) {
         newNoteInput = document.createElement('input')
+        newNoteInput.classList.add('new-input-value')
         newNoteSubmit = document.createElement('button')
-        newNoteSubmit.type = 'submit'
+        // newNoteSubmit.type = 'submit'
         newNoteSubmit.innerText = 'Submit'
+        newNoteSubmit.classList.add('edit-button')
         newNoteInput.value = event.target.parentElement.innerText.slice(0, -5)
         event.target.appendChild(newNoteInput)
         event.target.appendChild(newNoteSubmit)
+    }
+})
 
-        // updateNote(event.target)
+output.addEventListener('click', event => {
+    event.preventDefault()
+    if (event.target.classList.contains('edit-button')) {
+        // const target = event.target.parentElement
+        // const targetPar
+        updateNote(event.target)
     }
 })
 
 function updateNote(element) {
-    const noteId = element.parentElement.id
+    const noteId = element.parentElement.parentElement.id
+    const newNoteText = document.querySelector('.new-input-value').value
     fetch(url + "/" + `${noteId}`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            title: element,
-            body: element,
+            title: newNoteText,
+            body: newNoteText,
             create_at: moment().format()
         })
     })
     .then((response) => response.JSON)
     .then((data) => console.log(data))
+    location.reload()
 }
 
-function renderUpdatedNote (note) {
-    const editText = document.createElement('input')
-    editText.placeholder = 'enter updated note'
-    note.appendChild(editText)
-}
+// function renderUpdatedNote (note) {
+//     const editText = document.createElement('input')
+//     editText.placeholder = 'enter updated note'
+//     note.appendChild(editText)
+// }
 
 
 
